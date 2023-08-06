@@ -8,7 +8,7 @@ from .serializers import TodoSerializers
 from .models import Todo
 
 @api_view(['GET'])
-class all_todos(request = Request):
+def all_todos(request:Request):
     todos = Todo.objects.order_by('priority').all()
     todo_serializer = TodoSerializers(todos , many=True)
-    return Request(todo_serializer.data,status.HTTP_200_OK)
+    return Response(todo_serializer.data , status.HTTP_200_OK)
