@@ -12,6 +12,6 @@ def index_paje(request):
     return render(request,'home/index.html',context)
 
 @api_view(['GET'])
-def todos_lsan(request = Request):
+def todos_lsan(request:Request):
     todos = list(Todo.objects.order_by('priority').all().values('title','is_done'))
     return Response({'todos':todos}, status.HTTP_200_OK)
