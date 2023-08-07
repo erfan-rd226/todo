@@ -23,6 +23,8 @@ def all_todos(request:Request):
     return Response(None,status.HTTP_400_BAD_REQUEST)
 
 
+# added put and delete 
+
 @api_view(['GET','PUT','DELETE'])
 def todo_detail_view (requst:Request , todo_id:int):
     # try:
