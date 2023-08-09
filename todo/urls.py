@@ -19,7 +19,8 @@ urlpatterns = [
 #endregion
 
 
-    path('',views.TodoListMixinApiVeiw.as_view()),    
+    path('',views.TodoListMixinApiVeiw.as_view()),
+    path('<pk>/',views.TodoDetaiMixinApiVeiw.as_view()),    
 
 
 ]

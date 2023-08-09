@@ -128,4 +128,21 @@ class TodoListMixinApiVeiw(mixins.ListModelMixin,mixins.CreateModelMixin,generic
         return self.list(request)
 
 
+
+class TodoDetaiMixinApiVeiw(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
+    queryset = Todo.objects.order_by('priority').all()
+    serializer_class = TodoSerializers
+
+    def get (self,request:Request,pk):
+        return self.retrieve(request,pk)
+    
+    def put(self,request:Request,pk):
+        return self.update(request,pk)
+    
+    def delete(self,request:Request,pk):
+        return self.destroy(request,pk)
+
+
+
+
 #endregion
