@@ -7,5 +7,6 @@ urlpatterns = [
     # path('<int:todo_id>',views.todo_detail_view),
     
     #start class view...
-    path('',views.TodoListApiview.as_view()),
+    path('',views.TodoListApiView.as_view()),
+    path('<int:todo_id>/',views.TodoDetailApaView.as_view()),
 ]
