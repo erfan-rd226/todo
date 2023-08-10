@@ -19,8 +19,19 @@ urlpatterns = [
 #endregion
 
 
-    path('',views.TodoListMixinApiVeiw.as_view()),
-    path('<pk>/',views.TodoDetaiMixinApiVeiw.as_view()),    
+#region mixin...
 
+    # path('',views.TodoListMixinApiVeiw.as_view()),
+    # path('<pk>/',views.TodoDetaiMixinApiVeiw.as_view()),    
+
+#endregion
+
+
+#region generics
+
+    path('',views.TodoListGenericApiVeiw.as_view()),
+    path('<pk>/',views.TodoDetailGenericApiVeiw.as_view()),
+
+#endregion
 
 ]
