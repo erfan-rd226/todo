@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import path , include
 from . import views
+from rest_framework.routers import DefaultRouter
+
+
+router = DefaultRouter()
+router.register('',views.TodoViewSetApiView)
+
 
 urlpatterns = [
 
@@ -29,8 +35,16 @@ urlpatterns = [
 
 #region generics
 
-    path('',views.TodoListGenericApiVeiw.as_view()),
-    path('<pk>/',views.TodoDetailGenericApiVeiw.as_view()),
+    # path('',views.TodoListGenericApiVeiw.as_view()),
+    # path('<pk>/',views.TodoDetailGenericApiVeiw.as_view()),
+
+#endregion
+
+
+#region viewset
+
+path('',include(router.urls))
+
 
 #endregion
 

@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics,mixins
+from rest_framework import viewsets
 from .serializers import TodoSerializers
 from .models import Todo
 
@@ -147,12 +148,22 @@ from .models import Todo
 
 #region generics
 
-class TodoListGenericApiVeiw(generics.ListCreateAPIView):
+# class TodoListGenericApiVeiw(generics.ListCreateAPIView):
+#     queryset = Todo.objects.order_by('priority').all()
+#     serializer_class = TodoSerializers
+
+
+# class TodoDetailGenericApiVeiw(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Todo.objects.order_by('priority').all()
+#     serializer_class = TodoSerializers
+    
+#endregion
+
+
+#region viewset
+
+class TodoViewSetApiView(viewsets.ModelViewSet):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializers
 
-class TodoDetailGenericApiVeiw(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Todo.objects.order_by('priority').all()
-    serializer_class = TodoSerializers
-    
 #endregion
