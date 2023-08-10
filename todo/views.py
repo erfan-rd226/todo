@@ -114,35 +114,45 @@ from .models import Todo
 
 #endregion
 
-#region mixins 
 
-class TodoListMixinApiVeiw(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
+#region mixins...
+
+# class TodoListMixinApiVeiw(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
+#     queryset = Todo.objects.order_by('priority').all()
+#     serializer_class = TodoSerializers
+
+#     def get(self,request:Request):
+#         return self.list(request)
+    
+
+#     def post(self,request:Request):
+#         return self.list(request)
+
+
+# class TodoDetaiMixinApiVeiw(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
+#     queryset = Todo.objects.order_by('priority').all()
+#     serializer_class = TodoSerializers
+
+#     def get (self,request:Request,pk):
+#         return self.retrieve(request,pk)
+    
+#     def put(self,request:Request,pk):
+#         return self.update(request,pk)
+    
+#     def delete(self,request:Request,pk):
+#         return self.destroy(request,pk)
+
+#endregion
+
+
+#region generics
+
+class TodoListGenericApiVeiw(generics.ListCreateAPIView):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializers
 
-    def get(self,request:Request):
-        return self.list(request)
-    
-
-    def post(self,request:Request):
-        return self.list(request)
-
-
-
-class TodoDetaiMixinApiVeiw(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
+class TodoDetailGenericApiVeiw(generics.RetrieveUpdateDestroyAPIView):
     queryset = Todo.objects.order_by('priority').all()
     serializer_class = TodoSerializers
-
-    def get (self,request:Request,pk):
-        return self.retrieve(request,pk)
     
-    def put(self,request:Request,pk):
-        return self.update(request,pk)
-    
-    def delete(self,request:Request,pk):
-        return self.destroy(request,pk)
-
-
-
-
 #endregion
