@@ -1,11 +1,11 @@
 from django.urls import path , include
-from . import views
+# from . import views
+from .views import UserGenericApiView, TodoViewSetApiView
 from rest_framework.routers import DefaultRouter
 
 
-router = DefaultRouter()
-router.register('',views.TodoViewSetApiView)
-
+router = DefaultRouter(trailing_slash=False)
+router.register('',TodoViewSetApiView, basename="list-todo")
 
 urlpatterns = [
 
@@ -43,7 +43,8 @@ urlpatterns = [
 
 #region viewset
 
-path('',include(router.urls))
+    path('todos/',include(router.urls)),
+    path('todos/users/', UserGenericApiView.as_view(), name="user-list-with-todo")
 
 
 #endregion
